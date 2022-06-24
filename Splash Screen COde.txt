@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace NEW_DUNNIES_STORE.Splash_Screen
+{
+    public partial class splash_screen : Form
+    {
+        public splash_screen()
+        {
+            InitializeComponent();
+        }
+
+        private void splash_screen_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_splash_Tick(object sender, EventArgs e)
+        {
+            Form1 ob = new Form1();
+            ob.Show();
+            timer1_splash.Stop();
+            Hide();
+            
+        }
+    }
+}
