@@ -1,0 +1,11 @@
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+            label10.Left = label10.Left - 1;
+            if (label10.Left < -label10.Width)
+            {
+                label10.Left = panel3.Width;
+
+
+            }
