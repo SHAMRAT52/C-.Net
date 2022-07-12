@@ -1,0 +1,66 @@
+App config
+---------------------------------------------------------------
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <appSettings>
+    <add key="mycorn" value="data source=SPIDER-PC\SQLEXPRESS;initial catalog=NDS;persist security info=false;user id=sa;password=1234"/>
+  </appSettings>
+</configuration>
+
+
+-------------------------------------------------------------------
+Class 
+-------------------------------------------------------------------------
+
+namespace NEW_DUNNIES_STORE
+{
+    class Class1
+    {
+        public string stcorn = "";
+        public Class1()
+        {
+            stcorn = System.Configuration.ConfigurationSettings.AppSettings["mycon"];
+        }
+    }
+}
+
+------------------------------------------------------------------------------------------
+
+Form connection
+----------------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.IO;
+using System.Configuration;
+
+
+
+namespace NEW_DUNNIES_STORE
+{
+
+    
+
+
+    public partial class frm_company_profile : Form
+    {
+        public string file_name = "";
+
+        Class1 ob = new Class1();
+        SqlConnection obcon;
+
+       
+
+
+        public frm_company_profile()
+        {
+            InitializeComponent();
+            obcon = new SqlConnection(ob.stcorn);
+        }
