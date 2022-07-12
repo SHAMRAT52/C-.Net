@@ -1,0 +1,19 @@
+private void btn_browse_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog ob = new OpenFileDialog();
+                ob.ShowDialog();
+
+                file_name = ob.FileName;
+
+                Bitmap pic = new Bitmap(file_name);
+
+                pictureBox1.Image = (Image)pic;
+
+
+            }
+            catch
+            { 
+            }
+        }
