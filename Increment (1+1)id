@@ -1,0 +1,13 @@
+private void new_id()
+        {
+            SqlDataAdapter da = new SqlDataAdapter("select isnull(max(Company_Id),0)+1 as comid from Company_Info", obcon);
+            da.SelectCommand.CommandType = CommandType.Text;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                txtcomid.Text = dt.Rows[0]["comid"].ToString();
+
+            }
+
+        }
