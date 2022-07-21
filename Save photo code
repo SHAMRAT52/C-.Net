@@ -1,0 +1,25 @@
+  private void edit_photo()
+        {
+           
+
+
+                //try
+                //{
+                    FileInfo file = new FileInfo(filename.Trim());
+                    byte[] content = new byte[file.Length];
+                    FileStream imagefile = file.OpenRead();
+                    imagefile.Read(content, 0, content.Length);
+
+
+
+                    SqlCommand cmd = new SqlCommand("update Company_Info set Logo=@Logo where Company_Id=@CompanyId", obcon);
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.Add("@Logo", SqlDbType.Image).Value = content;
+                    cmd.Parameters.Add("@CompanyId", SqlDbType.VarChar).Value = txtcomid.Text;
+                    
+                    obcon.Open();
+                    cmd.ExecuteNonQuery();
+                    obcon.Close();
+       
+            
+        }
