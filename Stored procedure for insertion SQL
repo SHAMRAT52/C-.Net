@@ -1,0 +1,27 @@
+alter procedure sp_insert_company_profile
+
+@Com_Id int,
+@Com_Branch varchar(50),
+@Address varchar(50),
+@Slogan varchar(50),
+@Photo image
+
+as
+insert into Com_Profile
+
+(
+Com_Id,
+Com_Branch,
+Address,
+Slogan,
+Photo
+)
+
+values
+(
+@Com_Id,
+@Com_Branch,
+@Address,
+@Slogan,
+@Photo
+)
