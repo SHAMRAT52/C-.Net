@@ -1,0 +1,42 @@
+ private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            SqlDataAdapter da = new SqlDataAdapter("select*from Com_Profile where Com_Id=@Com_Id", obcon);
+            da.SelectCommand.CommandType = CommandType.Text;
+            da.SelectCommand.Parameters.Add("@Com_Id", SqlDbType.VarChar).Value = dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            {
+                lbl_id.Text = dt.Rows[0]["Com_Id"].ToString();
+                txt_branch_name.Text = dt.Rows[0]["Com_Branch"].ToString();
+                txt_address.Text = dt.Rows[0]["Address"].ToString();
+                //txtcont.Text = dt.Rows[0]["Contact_Number"].ToString();
+                txt_slogan.Text = dt.Rows[0]["Slogan"].ToString();
+
+
+
+
+
+                try
+                {
+                    byte[] bytelogo = (byte[])(dt.Rows[0]["Photo"]);
+                    photo_download = (byte[])(dt.Rows[0]["Photo"]);
+                    MemoryStream ms = new MemoryStream(bytelogo);
+                    Bitmap mylogo = (Bitmap)Bitmap.FromStream(ms);
+                    pictureBox1.Image = (Image)mylogo;
+                }
+                catch
+                {
+
+                }
+
+            }
+            else
+            {
+                // clear();
+            }
+            
+
+        }
