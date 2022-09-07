@@ -1,0 +1,14 @@
+ private void load_data()
+        {
+
+
+            SqlDataAdapter da = new SqlDataAdapter("select * from Com_Profile", obcon);
+            da.SelectCommand.CommandType = CommandType.Text;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.DataSource = dt;
+
+
+        }
+        
