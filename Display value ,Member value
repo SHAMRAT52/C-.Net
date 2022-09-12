@@ -1,0 +1,13 @@
+private void com_loaddata()
+        {
+            SqlDataAdapter da = new SqlDataAdapter("select * from  Com_Profile", obcon);
+            da.SelectCommand.CommandType = CommandType.Text;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            comboBox1.DataSource = dt;
+            comboBox1.ValueMember = "Com_Id";
+            comboBox1.DisplayMember = "Com_Branch";
+
+           
+        }
