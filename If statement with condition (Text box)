@@ -1,0 +1,3 @@
+ if (comboBox1.Text == "" || txt_User_id.Text == "" || txt_UserName.Text == "" || txt_Password.Text == "" || txt_confirmPassword.Text == "" || txt_Address.Text == "" || Cmb_userType.Text == "" || txt_FullNAme.Text == "")
+                {
+                }
