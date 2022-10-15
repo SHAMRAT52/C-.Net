@@ -1,0 +1,56 @@
+ private void insert()
+        {
+
+
+
+            try
+            {
+
+                if (comboBox1.Text == "" || txt_User_id.Text == "" || txt_UserName.Text == "" || txt_Password.Text == "" || txt_confirmPassword.Text == "" || txt_Address.Text == "" || Cmb_userType.Text == "" || txt_FullNAme.Text == "")
+                {
+                }
+                else
+                {
+
+
+
+
+                    SqlCommand cmd = new SqlCommand("sp_inser_into_User_profile", obcon);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@User_Id", SqlDbType.VarChar, 50).Value = txt_User_id.Text;
+                    cmd.Parameters.Add("@User_Name", SqlDbType.VarChar, 50).Value = txt_UserName.Text;
+                    cmd.Parameters.Add("@User_Type", SqlDbType.VarChar, 50).Value = Cmb_userType.Text;
+                    cmd.Parameters.Add("@Full_Name", SqlDbType.VarChar, 50).Value = txt_FullNAme.Text;
+                    cmd.Parameters.Add("@Address", SqlDbType.VarChar, 50).Value = txt_Address.Text;
+                    cmd.Parameters.Add("@Password", SqlDbType.VarChar, 50).Value = txt_Password.Text;
+                    cmd.Parameters.Add("@Confirm_Password", SqlDbType.VarChar, 50).Value = txt_confirmPassword.Text;
+                    cmd.Parameters.Add("@Com_Branch", SqlDbType.VarChar, 50).Value = (comboBox1.Text);
+                    cmd.Parameters.Add("@Com_id", SqlDbType.VarChar, 50).Value = comboBox1.SelectedValue;
+
+                    obcon.Open();
+                    cmd.ExecuteNonQuery();
+                    obcon.Close();
+
+                    if (file_name != "")
+                    {
+                        edit_photo();
+
+                    }
+
+
+
+                    MessageBox.Show("Data insert successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    file_name = "";
+                    pictureBox1.Image = null;
+
+                    data_load_grid_automaticly();
+
+                    clear();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Technical error", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
