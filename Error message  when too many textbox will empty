@@ -1,0 +1,6 @@
+if (cmb_catagory_id.Text == "" || cmb_com_id.Text == "" || txt_item_id.Text == "" || txt_iteam_name.Text == "" || txt_parchase_rate.Text == "" || txt_sales_rate.Text == "")
+                {
+
+                    MessageBox.Show("Please fill up all box");
+
+                }
