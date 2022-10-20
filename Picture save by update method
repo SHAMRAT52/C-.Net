@@ -1,0 +1,24 @@
+ byte[] photo_download = new byte[0];
+
+        private void edit_photo()
+        {
+
+
+
+            FileInfo file = new FileInfo(file_name.Trim());
+            byte[] content = new byte[file.Length];
+            FileStream imagefile = file.OpenRead();
+            imagefile.Read(content, 0, content.Length);
+
+
+
+            SqlCommand cmd = new SqlCommand("update Iteam_info set Photo=@Photo where Iteam_Id=@Iteam_Id", obcon);
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.Add("@Photo", SqlDbType.Image).Value = content;
+            cmd.Parameters.Add("@Iteam_Id", SqlDbType.VarChar, 50).Value = txt_item_id.Text;
+
+            obcon.Open();
+            cmd.ExecuteNonQuery();
+            obcon.Close();
+
+        }
